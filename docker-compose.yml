@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  influxdb:
+    image: influxdb:2.0
+    container_name: shelly-pdu-influxdb
+    restart: always
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: CHANGE_ME
+      DOCKER_INFLUXDB_INIT_ORG: shelly-pdu
+      DOCKER_INFLUXDB_INIT_BUCKET: shelly-pdu
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: CHANGE_ME
+    networks:
+      - internal
+
+  shelly-pdu-backend:
+    build:
+      context: ./backend
+    container_name: shelly-pdu-backend
+    restart: unless-stopped
+    depends_on:
+      - influxdb
+    volumes:
+      - ./config.yml:/app/config.yml:ro
+    networks:
+      - internal
+
+  shelly-pdu-frontend:
+    build:
+      context: ./frontend
+    container_name: shelly-pdu-frontend
+    restart: unless-stopped
+    depends_on:
+      - influxdb
+      - shelly-pdu-backend
+    networks:
+      - internal
+
+  ingress-switch:
+    build:
+      context: ./switch
+    container_name: shelly-pdu-ingress
+    restart: unless-stopped
+    depends_on:
+      - shelly-pdu-backend
+      - shelly-pdu-frontend
+    ports:
+      - "80:80"
+    networks:
+      - internal
+
+volumes:
+  influxdb_data:
+
+networks:
+  internal:
+    driver: bridge

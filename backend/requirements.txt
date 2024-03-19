@@ -1,0 +1,6 @@
+flask
+flask_cors
+requests
+PyYAML
+influxdb_client
+paramiko

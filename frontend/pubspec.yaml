@@ -1,0 +1,39 @@
+name: shelly_pdu
+description: A web-ui to control multiple Shelly Plug S devices.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  http: ^1.1.0
+  flutter_treeview: ^1.0.7+1
+  flutter_sticky_header: ^0.6.5
+  url_strategy: ^0.2.0
+  web_socket_channel: ^2.4.0
+  socket_io_client: ^2.0.3+1
+  uuid: ^4.1.0
+  ansicolor: ^2.0.2
+  dropdown_button2: ^2.3.9
+  fl_chart: ^0.64.0
+  visibility_detector: ^0.4.0+2
+  intl: ^0.18.1
+  package_info_plus: ^4.2.0
+  crypto: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/

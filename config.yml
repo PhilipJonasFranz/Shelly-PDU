@@ -1,0 +1,32 @@
+settings:
+  kwh_price: 0.3577
+
+actions:
+  - name: shutdown                        # Name of the action
+    label: Shutdown                       # Full name
+    type: ssh                             # Type of the action, currently only 'ssh' supported
+    command: "sudo poweroff"              # Command to be run on the host
+    icon: 0xf00b8                         # ID of the material icon inside flutter
+
+hosts:
+  - id: "64B7085C1788"                    # MAC address of the switch without ':'
+    name: my-shelly-plug-s-name           # Easy to read name for the switch
+    address: "192.168.0.25"               # IP-address of the switch in the network, ensure static IP
+    password: change_me                   # Device password of the shelly plug, remove if no password is set
+    script_index: 1                       # Index of the 'exporter.js' script. Open the script editor in the shelly web-ui to obtain the index, e.g. http://192.168.0.25/#/script/1
+    priority: "critical"                  # Priority of the switch:
+                                          #  - 'critical': The switch cannot be turned off
+                                          #  - 'important': The switch can only be turned of with a long press on the power button
+                                          #  - default: Leave empty, switch can be turned of with tap on the power button
+
+devices:
+  - id: "my-server"
+    name: "my-server-name"
+    management: "http://192.168.0.35/"    # Management IP of the server, like IPMI or Web-UI
+    switches:
+      - "64B7085C1788"                    # List of switch IDs that power this server
+    ssh_host: "192.168.178.156"           # SSH-accessible IP (required if actions are defined)
+    ssh_user: username                    # Username of the SSH user (required if actions are defined)
+    ssh_pass: change_me                   # Password of the SSH user (required if actions are defined)
+    actions:                              # Define actions that can be performed on this host (optional)
+      - shutdown

@@ -1,0 +1,17 @@
+{
+  "name": "shelly-pdu-switch",
+  "version": "1.0.0",
+  "description": "An ingress switch based on ExpressJS to multiplex multiple applications into the same domain.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "request": "^2.88.2"
+  }
+}
