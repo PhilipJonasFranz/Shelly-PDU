@@ -4,7 +4,19 @@ Shelly PDU is a remote power management tool that uses [Shelly Plug S](https://w
 
 ![Dashboard](./screenshots/mockup.png)
 
-**Why Shelly-PDU?**
+**Features**:
+
+- Overview over all configured switches in a single interface
+- Power monitoring per individual switch
+- Power-usage visualization over time via InfluxDB 2
+- Remote control switches from the Web-UI
+- Define devices as groups of switches
+- Supports switches with password authentication
+- Supports desktop and mobile layouts
+- Define actions to be run on devices (e.g. Shutdown)
+- Locate mode utilizing LED as indicator
+
+**Why use Shelly-PDU?**
 
 Compared to a hardware smart PDU this solution is:
 
@@ -22,17 +34,6 @@ On the flipside, hardware smart PDUs offer benefits such as:
 
 > [!WARNING]  
 > This project is still very young and thus not as mature as other solutions. I do not recommend to use it in a mission-critical scenario.
-
-**Features**:
-
-- Overview over all configured switches in a single interface
-- Power-usage history via InfluxDB 2
-- Remote toggle switches from the Web-UI
-- Define devices as groups of switches
-- Supports switches with password authentication
-- Supports desktop and mobile layouts
-- Define actions to be run on devices (e.g. Shutdown)
-- Locate mode utilizing LED as indicator
 
 ## Components
 
