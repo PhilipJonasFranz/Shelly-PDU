@@ -141,7 +141,11 @@ def average_power():
         for record in table.records:
             sum += record.get_value()
 
-    return jsonify({ "average": sum / len(result)})
+    average = sum
+    if len(result) > 0:
+        average = average / len(result)
+
+    return jsonify({ "average": average})
 
 
 @app.route('/hosts', methods=['GET'])
