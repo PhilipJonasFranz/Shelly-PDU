@@ -24,10 +24,11 @@ class StatisticsPageState extends State<StatisticsPage> {
     const Text('10m'),
     const Text('1h'),
     const Text('10h'),
-    const Text('1d')
+    const Text('1d'),
+    const Text('10d')
   ];
 
-  final List<bool> _selectedTime = <bool>[true, false, false, false];
+  final List<bool> _selectedTime = <bool>[true, false, false, false, false];
 
   List<String> getHostIDs() {
     List<String> hids = [];
@@ -68,8 +69,10 @@ class StatisticsPageState extends State<StatisticsPage> {
       return 60;
     } else if (_selectedTime[2]) {
       return 600;
-    } else {
+    } else if (_selectedTime[3]) {
       return 1440;
+    } else {
+      return 1440 * 10;
     }
   }
 
