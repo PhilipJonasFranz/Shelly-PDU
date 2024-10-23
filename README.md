@@ -1,6 +1,11 @@
 # Shelly-PDU
 
-Shelly PDU is a remote power management tool that uses [Shelly Plug S](https://www.shelly.com/en-de/products/product-overview/shelly-plus-plug-s) devices to monitor power consumption per single port, and provides time-series visualizations as well as remote control. The app uses the Flutter framework as frontend, and a Python Flask server as backend. Additionally, the app uses an external InfluxDB 2 instance to collect time-series data.
+Shelly PDU is a remote power management tool that uses [Shelly Plug S](https://www.shelly.com/de/blogs/documentation/shelly-plus-plug-s) devices to monitor power consumption per single port, and provides time-series visualizations as well as remote control. The app uses the Flutter framework as frontend, and a Python Flask server as backend. Additionally, the app uses an external InfluxDB 2 instance to collect time-series data.
+
+> [!WARNING]  
+> Currently, supported devices are:
+> - [Shelly Plug S](https://www.shelly.com/de/blogs/documentation/shelly-plus-plug-s)
+> Other devices MAY work, but are not guaranteed to work. The current version is built for [Gen 2 Devices](https://shelly-api-docs.shelly.cloud/gen2/), and uses the RPC calls to interact with the devices.
 
 ![Dashboard](./screenshots/mockup.png)
 
@@ -37,7 +42,7 @@ On the flipside, hardware smart PDUs offer benefits such as:
 
 ## Components
 
-Shelly-PDU consists out of three major components:
+Shelly-PDU consists out of four major components:
 
 - Frontend: Serves Flutter Webapp
 - InfluxDB: Collects time-series data scraped from switches
